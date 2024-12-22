@@ -30,10 +30,11 @@ jobs:
           # These tools are ALWAYS needed in newer versions than what ships in LTS distributions
           python3 -m pip install --user --upgrade pip
           python3 -m pip install --user --upgrade meson
-          python3 -m pip install --user --upgrade ninja-build
+          python3 -m pip install --user --upgrade ninja
 
       - name: Build and install libwayland-server
         run: |
+          set -x
           export PATH=$PATH:$HOME/.local/bin
           git clone https://gitlab.freedesktop.org/wayland/wayland.git
           cd wayland
@@ -46,6 +47,7 @@ jobs:
 
       - name: Build and install wlroots
         run: |
+          set -x
           export PATH=$PATH:$HOME/.local/bin
           git clone https://gitlab.freedesktop.org/wlroots/wlroots.git
           cd wlroots
@@ -56,6 +58,7 @@ jobs:
           
       - name: Build qwlroots
         run: |
+          set -x
           mkdir build
           cd build
           cmake ..
