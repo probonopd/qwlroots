@@ -16,7 +16,7 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt update
-          sudo apt install -y pkg-config cmake qt6-base-private-dev qt6-base-dev-tools wayland-protocols libpixman-1-dev libwlroots-0.18-dev
+          sudo apt install -y meson libwayland-dev libwayland-egl1-mesa libwayland-egl1-mesa-dev libxkbcommon-dev libudev-dev libpixman-1-dev libdrm-dev libgbm-dev libinput-dev libseat-dev hwdata libdisplay-info-dev libliftoff-dev
 
       - name: Install wlr-protocols
         run: |
@@ -24,6 +24,15 @@ jobs:
           cd wlr-protocols
           sudo make install
 
+      - name: Build and install wlroots
+        run: |
+          git clone https://gitlab.freedesktop.org/wlroots/wlroots.git
+          cd wlroots
+          git checkout 0.18.0
+          meson setup build/
+          ninja -C build/
+          sudo ninja -C build/ install
+          
       - name: Build qwlroots
         run: |
           mkdir build
