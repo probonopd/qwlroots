@@ -31,6 +31,7 @@ jobs:
           python3 -m pip install --user --upgrade pip
           python3 -m pip install --user --upgrade meson
           python3 -m pip install --user --upgrade ninja
+          ls -lh /home/runner/.local/bin/
 
       - name: Build and install libwayland-server
         run: |
@@ -43,7 +44,7 @@ jobs:
           cd build-server
           meson --buildtype=release --prefix=/usr/local ..
           ninja
-          sudo -E ninja install
+          sudo /home/runner/.local/bin/ninja install
 
       - name: Build and install wlroots
         run: |
@@ -54,7 +55,7 @@ jobs:
           git checkout 0.18.0
           meson setup build/
           ninja -C build/
-          sudo -E ninja -C build/ install
+          sudo /home/runner/.local/bin/ninja -C build/ install
           
       - name: Build qwlroots
         run: |
