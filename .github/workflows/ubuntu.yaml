@@ -16,7 +16,7 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt update
-          sudo apt install -y meson libwayland-dev libxkbcommon-dev libudev-dev libpixman-1-dev libdrm-dev libgbm-dev libinput-dev graphviz doxygen xsltproc xmlto
+          sudo apt install -y libwayland-dev libxkbcommon-dev libudev-dev libpixman-1-dev libdrm-dev libgbm-dev libinput-dev graphviz doxygen xsltproc xmlto
 
       - name: Install wlr-protocols
         run: |
@@ -26,7 +26,6 @@ jobs:
 
       - name: Install meson
         run: |
-          pip3 install --user meson
           export PATH=$PATH:$HOME/.local/bin
           python3 -m pip install --user --upgrade pip
           python3 -m pip install --user --upgrade meson
