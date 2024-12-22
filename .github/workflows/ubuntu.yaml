@@ -26,7 +26,7 @@ jobs:
 
       - name: Install meson and ninja
         run: |
-          export PATH=$PATH:$HOME/.local/bin
+          export PATH=$(readlink -f $HOME/.local/bin):$PATH
           # These tools are ALWAYS needed in newer versions than what ships in LTS distributions
           python3 -m pip install --user --upgrade pip
           python3 -m pip install --user --upgrade meson
@@ -35,7 +35,7 @@ jobs:
       - name: Build and install libwayland-server
         run: |
           set -x
-          export PATH=$PATH:$HOME/.local/bin
+          export PATH=$(readlink -f $HOME/.local/bin):$PATH
           git clone https://gitlab.freedesktop.org/wayland/wayland.git
           cd wayland
           git checkout 1.23.0
@@ -48,7 +48,7 @@ jobs:
       - name: Build and install wlroots
         run: |
           set -x
-          export PATH=$PATH:$HOME/.local/bin
+          export PATH=$(readlink -f $HOME/.local/bin):$PATH
           git clone https://gitlab.freedesktop.org/wlroots/wlroots.git
           cd wlroots
           git checkout 0.18.0
