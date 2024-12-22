@@ -16,7 +16,7 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt update
-          sudo apt install -y meson libwayland-dev libxkbcommon-dev libudev-dev libpixman-1-dev libdrm-dev libgbm-dev libinput-dev graphviz doxygen xsltproc
+          sudo apt install -y meson libwayland-dev libxkbcommon-dev libudev-dev libpixman-1-dev libdrm-dev libgbm-dev libinput-dev graphviz doxygen xsltproc xmlto
 
       - name: Install wlr-protocols
         run: |
