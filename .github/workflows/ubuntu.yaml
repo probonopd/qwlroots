@@ -30,7 +30,7 @@ jobs:
           # These tools are ALWAYS needed in newer versions than what ships in LTS distributions
           python3 -m pip install --user --upgrade pip
           python3 -m pip install --user --upgrade meson
-          python3 -m pip install --user --upgrade ninja
+          python3 -m pip install --user --upgrade ninja-build
 
       - name: Build and install libwayland-server
         run: |
