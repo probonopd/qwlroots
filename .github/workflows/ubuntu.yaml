@@ -8,7 +8,7 @@ on:
 
 jobs:
   build-and-test:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -53,6 +53,9 @@ jobs:
           git clone https://gitlab.freedesktop.org/wlroots/wlroots.git
           cd wlroots
           git checkout 0.18.0
+          # libdrm found: NO. Found 2.4.107 but need: '>=2.4.122'
+          # That version is only in Ubuntu 24.10 which is way too new at this moment to assume everyone has it yet?
+          # Why do they NEVER test stuff on older LTS releases and always draw in very recent dependencies?
           meson setup build/
           ninja -C build/
           sudo --preserve-env /home/runner/.local/bin/ninja -C build/ install
