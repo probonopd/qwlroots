@@ -16,7 +16,7 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt update
-          sudo apt install -y meson libwayland-dev libwayland-egl1-mesa libwayland-egl1-mesa-dev libxkbcommon-dev libudev-dev libpixman-1-dev libdrm-dev libgbm-dev libinput-dev libseat-dev hwdata libdisplay-info-dev libliftoff-dev
+          sudo apt install -y meson libwayland-dev libxkbcommon-dev libudev-dev libpixman-1-dev libdrm-dev libgbm-dev libinput-dev
 
       - name: Install wlr-protocols
         run: |
