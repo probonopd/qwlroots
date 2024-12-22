@@ -24,8 +24,16 @@ jobs:
           cd wlr-protocols
           sudo make install
 
+      - name: Install meson
+        run: |
+          pip3 install --user meson
+          export PATH=$PATH:$HOME/.local/bin
+          python3 -m pip install --user --upgrade pip
+          python3 -m pip install --user --upgrade meson
+          
       - name: Build and install wlroots
         run: |
+          export PATH=$PATH:$HOME/.local/bin
           git clone https://gitlab.freedesktop.org/wlroots/wlroots.git
           cd wlroots
           git checkout 0.18.0
