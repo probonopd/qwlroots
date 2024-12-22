@@ -41,7 +41,7 @@ jobs:
           cd build-server
           meson --buildtype=release --prefix=/usr/local ..
           ninja
-          sudo ninja install
+          sudo -E ninja install
 
       - name: Build and install wlroots
         run: |
@@ -51,7 +51,7 @@ jobs:
           git checkout 0.18.0
           meson setup build/
           ninja -C build/
-          sudo ninja -C build/ install
+          sudo -E ninja -C build/ install
           
       - name: Build qwlroots
         run: |
