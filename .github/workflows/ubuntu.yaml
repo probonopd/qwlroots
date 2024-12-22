@@ -1,0 +1,36 @@
+name: Build and Test
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install dependencies
+        run: |
+          sudo apt update
+          sudo apt install -y pkg-config cmake qt6-base-private-dev qt6-base-dev-tools wayland-protocols libpixman-1-dev libwlroots-0.18-dev
+
+      - name: Install wlr-protocols
+        run: |
+          git clone https://github.com/deepin-community/wlr-protocols.git
+          cd wlr-protocols
+          sudo make install
+
+      - name: Build qwlroots
+        run: |
+          mkdir build
+          cd build
+          cmake ..
+          cmake --build .
+
+      - name: Run tests
+        run: |
+          cd build
+          ctest
